@@ -73,7 +73,7 @@ void	reverse_rotate(int *arr, int size, char *msg)
 		i--;
 	}
 	arr[0] = tmp;
-	write(1, msg, 3);
+	write(1, msg, 4);
 }
 
 int push_swap(int *arr_a, int *a_size)
@@ -103,7 +103,7 @@ int push_swap(int *arr_a, int *a_size)
     }
 	else
 	{
-		reverse_rotate(arr_a, *a_size, "ra\n");
+		reverse_rotate(arr_a, *a_size, "rra\n");
 	}
     return 0;
 }
@@ -115,18 +115,16 @@ int is_digit(int c)
 	return (0);
 }
 
-int main(int ac, char **av)
+int *arr_extracter(char **av, int ac, int initial)
 {
-    int *arr_a;
-    int i;
-    int j;
-    
-    if (ac <= 1)
-        return 0;
-    arr_a = (int *)malloc((ac - 1) * sizeof(int));
+	int *arr_a;
+	int	j;
+	int i;
+
+    arr_a = (int *)malloc((ac - initial) * sizeof(int));
     if (arr_a == NULL)
-        return (0);
-    i = 1;
+        return (NULL);
+    i = initial;
     while(i < ac)
     {
         j = 0;
@@ -135,14 +133,45 @@ int main(int ac, char **av)
             if (is_digit(av[i][j]) != 1)
             {
                 printf("Error");//////////////////
-                return 0;
+                return (NULL);
             }
             j++;
         }
-        arr_a[i - 1] = atoi(av[i]);///////////////////////////////
+        arr_a[i - initial] = atoi(av[i]);///////////////////////////////
         i++;
     }
-	int a_size = ac -1;//////
+	return (arr_a);
+}
+
+int main(int ac, char **av)
+{
+    int *arr_a;
+    int i;
+    int j;
+	int a_size;
+
+    if (ac <= 1)
+        return 0;
+	if (ac == 2)
+	{
+		arr_a = arr_extracter(ft_split(av[1], ' '), count_words(av[1], ' '), 0);
+		a_size = count_words(av[1], ' ');
+	}
+	if (ac > 2)
+	{
+		arr_a = arr_extracter(av, ac, 1);
+		a_size = ac -1;
+	}
+	if (arr_a == NULL)
+		return (0);
+	//////
+	////
+	// for(i = 0; i > ac - 1; i++)
+	// {
+	// 	printf("%d\n", arr_a[i]);
+	// }
+	// return 0;
+	////
     while(1)
     {
         if (push_swap(arr_a, &a_size) == 1)
