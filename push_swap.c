@@ -67,6 +67,22 @@ int min_indice(int *arr, int size)
     return (indice);
 }
 
+void    rotate(int *arr, int size, char *msg)
+{
+    int tmp;
+    int i;
+
+    tmp = arr[0];
+    i = 0;
+    while (i < size - 1)
+    {
+        arr[i] = arr[i + 1];
+        i++;
+    }
+    arr[size - 1] = tmp;
+    write(1, msg, 4);
+}
+
 void	reverse_rotate(int *arr, int size, char *msg)
 {
 	int tmp;
@@ -80,7 +96,45 @@ void	reverse_rotate(int *arr, int size, char *msg)
 		i--;
 	}
 	arr[0] = tmp;
-	write(1, msg, 4);
+    if(msg[0] != '\0')
+	    write(1, msg, 4);
+}
+
+void    sort_three_nbrs(int *arr_a)
+{
+    if(min_indice(arr_a, 3) == 0)
+    {
+        //sa ra
+        swap(arr_a, "sa\n");
+        rotate(arr_a, 3, "ra\n");
+    }
+    else if (min_indice(arr_a, 3) == 1)
+    {
+        if(arr_a[0] > arr_a[2])
+        {
+            //ra
+            rotate(arr_a, 3, "ra\n");
+        }
+        else if(arr_a[0] < arr_a[2])
+        {
+            //sa
+            swap(arr_a, "sa\n");
+        }
+    }
+    else if(min_indice(arr_a, 3) == 2)
+    {
+        if (arr_a[0] < arr_a[1])
+        {
+            //rra
+            reverse_rotate(arr_a, 3, "rra\n");
+        }
+        else if (arr_a[0] > arr_a[2])
+        {
+            //sa rra
+            swap(arr_a, "sa\n");
+            reverse_rotate(arr_a, 3, "rra\n");
+        }
+    }
 }
 
 int push_swap(int *arr_a, int *a_size)
@@ -99,6 +153,10 @@ int push_swap(int *arr_a, int *a_size)
         while (b_size != 0)
             push(arr_b, arr_a, &b_size, a_size, "pa\n");
         return 1;
+    }
+    else if (*a_size == 3)
+    {
+        sort_three_nbrs(arr_a);
     }
     else if (arr_a[0] > arr_a[1])
     {
