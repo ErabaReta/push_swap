@@ -46,18 +46,25 @@ void    swap(int *arr, char *msg)
     write(1, msg, 3);
 }
 
-int top_is_min(int *arr, int size)
+int min_indice(int *arr, int size)
 {
     int i;
+    int min;
+    int indice;
 
-    i = 0;
+    i = 1;
+    min = arr[0];
+    indice = 0;
     while (i < size)
     {
-        if (arr[0] > arr[i])
-            return (0);
+        if (min > arr[i])
+        {
+            min = arr[i];
+            indice = i;
+        }
         i++;
     }
-    return (1);
+    return (indice);
 }
 
 void	reverse_rotate(int *arr, int size, char *msg)
@@ -97,7 +104,7 @@ int push_swap(int *arr_a, int *a_size)
     {
         swap(arr_a, "sa\n");
     }
-    else if (top_is_min(arr_a, *a_size) == 1)
+    else if (min_indice(arr_a, *a_size) == 0)
     {
         push(arr_a, arr_b, a_size, &b_size, "pb\n");
     }
@@ -164,14 +171,6 @@ int main(int ac, char **av)
 	}
 	if (arr_a == NULL)
 		return (0);
-	//////
-	////
-	// for(i = 0; i > ac - 1; i++)
-	// {
-	// 	printf("%d\n", arr_a[i]);
-	// }
-	// return 0;
-	////
     while(1)
     {
         if (push_swap(arr_a, &a_size) == 1)
