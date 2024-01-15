@@ -137,17 +137,94 @@ void    sort_three_nbrs(int *arr_a)
     }
 }
 
+int	rank_calc(int *arr, int arr_size, int nbr, char mode)
+{
+	int	i;
+	int	rank;
+
+	i = 0;
+	rank = -1;
+	while (i < arr_size)
+	{
+		if((nbr < arr[i] && mode == 0) || (nbr > arr[i] && mode == 1))
+		{
+			rank = i;
+			break ;
+		}
+		i++;
+	}
+	if (rank == -1)
+		rank = i;
+	return (rank);
+}
+
+int	cheapest_move_counter(int *arr_a, int *arr_b, int a_size, int b_size)
+{
+	int	indice;
+	int	count;
+	int tmp;
+	int	i;
+
+	i = 0;
+	count = a_size + b_size + 1;
+	while (i < count)
+	{
+		tmp = rank_calc(arr_b, b_size, arr_a[i], 1);
+		if (tmp <= (b_size/2))
+		{
+			tmp = tmp + 1 + i;	
+		}
+		else
+		{
+			if (i > b_size - tmp)
+				tmp = b_size - tmp + (i - tmp);
+			else
+				tmp = i + 1;
+		}
+		if (tmp < count)
+		{
+			count = tmp;
+			indice = i;
+		}
+		i++;
+	}
+	i = a_size - 1;
+	while (i >= 0 && ((a_size - 1 - i) > count))
+	{
+		tmp = rank_calc(arr_b, b_size, arr_a[i], 1);
+		if (tmp <= (b_size/2))
+		{
+			if (a_size - 1 - i > tmp)
+				tmp = a_size - 1 - i;
+			else
+				tmp = tmp + 1;	
+		}
+		else
+		{
+			tmp = (a_size - 1 - i) + (b_size - tmp);
+		}
+		if (tmp < count)
+		{
+			count = tmp;
+			indice = i;
+		}
+	}
+	return (indice);	
+}
+
 int push_swap(int *arr_a, int *a_size)
 {
     static int *arr_b;
     static int b_size;
-    
+    int	cheapest_move;
+
     if(arr_b == NULL)
     {
         arr_b = (int *)malloc(*a_size * sizeof(int));
         if(arr_b == NULL)
             return (1);
     }
+	cheapest_move = cheapest_move_counter(arr_a, arr_b, *a_size, b_size);
     if(arr_is_sorted(arr_a, *a_size))
     {
         while (b_size != 0)
@@ -158,14 +235,14 @@ int push_swap(int *arr_a, int *a_size)
     {
         sort_three_nbrs(arr_a);
     }
-    else if (arr_a[0] > arr_a[1])
-    {
-        swap(arr_a, "sa\n");
-    }
-    else if (min_indice(arr_a, *a_size) == 0)
-    {
-        push(arr_a, arr_b, a_size, &b_size, "pb\n");
-    }
+    // else if (arr_a[0] > arr_a[1])
+    // {
+    //     swap(arr_a, "sa\n");
+    // }
+    // else if (min_indice(arr_a, *a_size) == 0)
+    // {
+    //     push(arr_a, arr_b, a_size, &b_size, "pb\n");
+    // }
 	else
 	{
 		reverse_rotate(arr_a, *a_size, "rra\n");
