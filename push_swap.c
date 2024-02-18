@@ -235,14 +235,14 @@ int push_swap(int *arr_a, int *a_size)
     {
         sort_three_nbrs(arr_a);
     }
-    // else if (arr_a[0] > arr_a[1])
-    // {
-    //     swap(arr_a, "sa\n");
-    // }
-    // else if (min_indice(arr_a, *a_size) == 0)
-    // {
-    //     push(arr_a, arr_b, a_size, &b_size, "pb\n");
-    // }
+    else if (arr_a[0] > arr_a[1])
+    {
+        swap(arr_a, "sa\n");
+    }
+    else if (min_indice(arr_a, *a_size) == 0)
+    {
+        push(arr_a, arr_b, a_size, &b_size, "pb\n");
+    }
 	else
 	{
 		reverse_rotate(arr_a, *a_size, "rra\n");
@@ -289,27 +289,50 @@ int main(int ac, char **av)
 {
     int *arr_a;
     int i;
-    int j;
+    char *str;
 	int a_size;
 
+    str = ft_strdup(" ");
     if (ac <= 1)
         return 0;
-	if (ac == 2)
-	{
-		arr_a = arr_extracter(ft_split(av[1], ' '), count_words(av[1], ' '), 0);
-		a_size = count_words(av[1], ' ');
-	}
-	if (ac > 2)
-	{
-		arr_a = arr_extracter(av, ac, 1);
-		a_size = ac -1;
-	}
+    i = 1;
+    while(i < ac)
+    {
+        str = ft_strjoin(str, " ");
+        str = ft_strjoin(str, av[i]);
+        i++;
+    }
+    int k =0;
+    // while (str[k] != '\0')
+    //     {
+    //         if (str[k] != ' ')
+    //             break;
+    //         k++;
+    //     }
+    // if (k == ft_strlen(str))
+    // {
+    //         printf("Error");//////////////////
+    //         return 0;
+    // }
+	arr_a = arr_extracter(ft_split(str, ' '), count_words(str, ' '), 0);
 	if (arr_a == NULL)
-		return (0);
+	    return (0);
+	a_size = count_words(str, ' ');
+    // ///////////////////////////////////////////////////
+    // for(int j = 0;j < a_size; j++ )//
+    //     printf("%d\n", arr_a[j]);//
+    // printf("======================\n");//
+    // ///////////////////////////////////////////////////
+
     while(1)
     {
         if (push_swap(arr_a, &a_size) == 1)
             break ;
     }
+    // /////////////////////////////////////////////
+    // printf("======================\n");//
+    // for(int j = 0;j < a_size; j++ )//
+    //     printf("%d\n", arr_a[j]);//
+    // //////////////////////////////////////////////
     return (0);
 }
