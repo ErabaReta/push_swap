@@ -137,28 +137,49 @@ void    sort_three_nbrs(int *arr_a)
     }
 }
 
-int	rank_calc(int *arr, int arr_size, int nbr, char mode)
+unsigned int ft_abs(int value)
+{
+    return (((value > 0) - (value < 0)) * value);
+}
+
+int	rank_calc(int *arr, int arr_size, int nbr)
 {
 	int	i;
 	int	rank;
+    unsigned int shortest_dist;
 
-	i = 0;
-	rank = -1;
+    shortest_dist = ft_abs(nbr - arr[0]);
+	i = 1;
+	rank = 0;
 	while (i < arr_size)
 	{
-		if((nbr < arr[i] && mode == 0) || (nbr > arr[i] && mode == 1))
-		{
-			rank = i;
-			break ;
-		}
+        if(shortest_dist < ft_abs(nbr - arr[i]))
+        {
+            shortest_dist = ft_abs(nbr - arr[0]);
+            rank = i;
+        }
 		i++;
 	}
-	if (rank == -1)
-		rank = i;
+    if (nbr > arr[rank])
+        rank += 1;
 	return (rank);
 }
 
-int	cheapest_move_counter(int *arr_a, int *arr_b, int a_size, int b_size)
+int cheapest_path(int up_up, int up_down, int down_up, int down_down)
+{
+    int min;
+
+    min = up_up;
+    if (min < up_down)
+        min = up_down;
+    if (min < down_up)
+        min = up_down;
+    if (min < down_down)
+        min = down_down;
+    return (min);
+}
+
+int	cheapest_move_counter(int *arr_a, int *arr_b, int a_size, int b_size)// returns the indice of the number with the cheapest moves
 {
 	int	indice;
 	int	count;
@@ -166,50 +187,37 @@ int	cheapest_move_counter(int *arr_a, int *arr_b, int a_size, int b_size)
 	int	i;
 
 	i = 0;
-	count = a_size + b_size + 1;
-	while (i < count)
+	count = a_size + b_size + 1; // setting the max (it decreases anyway)
+	while (i < a_size)
 	{
-		tmp = rank_calc(arr_b, b_size, arr_a[i], 1);
-		if (tmp <= (b_size/2))
-		{
-			tmp = tmp + 1 + i;	
-		}
-		else
-		{
-			if (i > b_size - tmp)
-				tmp = b_size - tmp + (i - tmp);
-			else
-				tmp = i + 1;
-		}
-		if (tmp < count)
-		{
-			count = tmp;
-			indice = i;
-		}
-		i++;
-	}
-	i = a_size - 1;
-	while (i >= 0 && ((a_size - 1 - i) > count))
-	{
-		tmp = rank_calc(arr_b, b_size, arr_a[i], 1);
-		if (tmp <= (b_size/2))
-		{
-			if (a_size - 1 - i > tmp)
-				tmp = a_size - 1 - i;
-			else
-				tmp = tmp + 1;	
-		}
-		else
-		{
-			tmp = (a_size - 1 - i) + (b_size - tmp);
-		}
-		if (tmp < count)
+		tmp = rank_calc(arr_b, b_size, arr_a[i]); // store the indice of our number if it was in the other array
+        if (i > tmp)
+            if (a_size - i > b_size - tmp)
+                tmp = cheapest_path(i, i + (b_size - tmp), (a_size - i) + tmp, a_size - i);
+            else
+                tmp = cheapest_path(i, i + (b_size - tmp), (a_size - i) + tmp, b_size - tmp);
+        else
+            if (a_size - i > b_size - tmp)
+                tmp = cheapest_path(tmp, i + (b_size - tmp), (a_size - i) + tmp, a_size - i);
+            else
+                tmp = cheapest_path(tmp, i + (b_size - tmp), (a_size - i) + tmp, b_size - tmp);
+		if (tmp < count)  // !!!!! Dont forget tmp after this loses its meaning , the variable will be used next to store how many moves !!!!!!!!!! 
 		{
 			count = tmp;
 			indice = i;
 		}
 	}
-	return (indice);	
+	return (indice);
+}
+
+void    push_cheapest(int *arr_a, int *arr_b, int a_size, int b_size)
+{
+    int cheapest_move;
+    int rank;
+
+    cheapest_move = cheapest_move_counter(arr_a, arr_b, a_size, b_size);
+    rank = rank_calc(arr_b, b_size, arr_a[cheapest_move]);
+
 }
 
 int push_swap(int *arr_a, int *a_size)
@@ -228,25 +236,32 @@ int push_swap(int *arr_a, int *a_size)
     if(arr_is_sorted(arr_a, *a_size))
     {
         while (b_size != 0)
-            push(arr_b, arr_a, &b_size, a_size, "pa\n");
+        {
+            cheapest_move = cheapest_move_counter(arr_b, arr_a, b_size, *a_size);
+            // push(arr_b, arr_a, &b_size, a_size, "pa\n");
+        }
         return 1;
     }
     else if (*a_size == 3)
     {
         sort_three_nbrs(arr_a);
     }
-    else if (arr_a[0] > arr_a[1])
+    else
     {
-        swap(arr_a, "sa\n");
+        push_cheapest(arr_a, arr_b, *a_size, b_size);
     }
-    else if (min_indice(arr_a, *a_size) == 0)
-    {
-        push(arr_a, arr_b, a_size, &b_size, "pb\n");
-    }
-	else
-	{
-		reverse_rotate(arr_a, *a_size, "rra\n");
-	}
+    // else if (arr_a[0] > arr_a[1])
+    // {
+    //     swap(arr_a, "sa\n");
+    // }
+    // else if (min_indice(arr_a, *a_size) == 0)
+    // {
+    //     push(arr_a, arr_b, a_size, &b_size, "pb\n");
+    // }
+	// else
+	// {
+	// 	reverse_rotate(arr_a, *a_size, "rra\n");
+	// }
     return 0;
 }
 
@@ -262,7 +277,7 @@ int *arr_extracter(char **av, int ac, int initial)
 	int *arr_a;
 	int	j;
 	int i;
-
+    long tmp;
     arr_a = (int *)malloc((ac - initial) * sizeof(int));
     if (arr_a == NULL)
         return (NULL);
@@ -279,7 +294,13 @@ int *arr_extracter(char **av, int ac, int initial)
             }
             j++;
         }
-        arr_a[i - initial] = atoi(av[i]);///////////////////////////////
+        tmp = atoi(av[i]);///////////////////////////////
+        if (tmp > INT_MAX)
+        {
+            printf("Error");//////////////////
+            free(arr_a);
+            return (NULL);
+        }
         i++;
     }
 	return (arr_a);
@@ -318,6 +339,7 @@ int main(int ac, char **av)
 	if (arr_a == NULL)
 	    return (0);
 	a_size = count_words(str, ' ');
+    
     // ///////////////////////////////////////////////////
     // for(int j = 0;j < a_size; j++ )//
     //     printf("%d\n", arr_a[j]);//
