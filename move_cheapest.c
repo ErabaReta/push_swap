@@ -1,0 +1,24 @@
+#include "push_swap.h"
+
+void	move_cheapest(int *arr_b, int *arr_a, int b_size, int a_size)
+{
+	t_cheapest	cheapest_move;
+
+	cheapest_move = cheapest_move_counter(arr_b, arr_a, b_size, a_size);
+	if (cheapest_move.path == 1)
+	{
+		up_up(arr_a, arr_b, a_size, b_size);
+	}
+	else if (cheapest_move.path == 2)
+	{
+		up_down(arr_a, arr_b, a_size, b_size);
+	}
+	else if (cheapest_move.path == 3)
+	{
+		down_up(arr_a, arr_b, a_size, b_size);
+	}
+	else if (cheapest_move.path == 4)
+	{
+		down_down(arr_a, arr_b, a_size, b_size);
+	}
+}

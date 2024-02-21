@@ -1,0 +1,25 @@
+#include "push_swap.h"
+
+t_cheapest	cheapest_path(int up_up, int up_down, int down_up, int down_down)
+{
+	t_cheapest	min;
+
+	min.value = up_up;
+	min.path = 1;
+	if (min.value > up_down)
+	{
+		min.value = up_down;
+		min.path = 2;
+	}
+	if (min.value > down_up)
+	{
+		min.value = down_up;
+		min.path = 3;
+	}
+	if (min.value > down_down)
+	{
+		min.value = down_down;
+		min.path = 4;
+	}
+	return (min);
+}
