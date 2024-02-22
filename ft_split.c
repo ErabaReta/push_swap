@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/21 22:56:36 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/02/21 23:50:10 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ size_t	count_words(char const *s, char c)
 	}
 	return (count);
 }
+
 void	*extracter(char *ptr, size_t *end_index,
 						size_t *start_index, const char *s)
 {
@@ -90,4 +91,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (ptr);
 }
-

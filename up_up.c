@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   up_up.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/22 00:23:11 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/02/22 00:23:51 by eouhrich         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void up_up(int *arr_a, int *arr_b, int a_size, int b_size)
+void	up_up(int *arr_a, int *arr_b, int a_size, int b_size)
 {
-	int i;
+	int			i;
 	t_cheapest	cheapest_move;
 
 	i = 0;

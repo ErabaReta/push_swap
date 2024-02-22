@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   down_down.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 23:45:14 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/02/21 23:47:10 by eouhrich         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-void down_down(int *arr_a, int *arr_b, int a_size, int b_size)
+void	down_down(int *arr_a, int *arr_b, int a_size, int b_size)
 {
-		t_cheapest	cheapest_move;
+	t_cheapest	cheapest_move;
 	int			i;
 
 	i = 0;

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/22 00:15:36 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/02/22 00:15:42 by eouhrich         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	push(int *arr_src, int *arr_dst, int *src_size, int *dst_size,
-		char *msg)
+void	push(int *arr_src, int *arr_dst, int *src_size, int *dst_size)
 {
 	int	tmp;
 	int	pushed;
@@ -23,5 +34,4 @@ void	push(int *arr_src, int *arr_dst, int *src_size, int *dst_size,
 	arr_dst[0] = pushed;
 	*dst_size += 1;
 	*src_size -= 1;
-	write(1, msg, 3);
 }

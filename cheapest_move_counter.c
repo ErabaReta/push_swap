@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cheapest_move_counter.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 23:44:03 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/02/22 22:08:43 by eouhrich         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_cheapest	cheapest_move_counter(int *arr_b, int *arr_a, int b_size,
@@ -20,6 +32,7 @@ t_cheapest	cheapest_move_counter(int *arr_b, int *arr_a, int b_size,
 			cheapest.indice = i;
 			cheapest.rank = rank;
 		}
+		// printf("caluclating... : indice => %d | rank => %d | path=> %d | moves => %d\n", i, rank, tmp.path, tmp.value);//////////////
 		i++;
 	}
 	return (cheapest);

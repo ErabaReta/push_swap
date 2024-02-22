@@ -6,11 +6,28 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:03 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/21 23:00:28 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:09:57 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	fill_a(int *arr_a, int *arr_b, int *a_size, int *b_size)
+{
+	while (*b_size != 0)
+	{
+		move_cheapest(arr_b, arr_a, *b_size, *a_size);
+		push(arr_b, arr_a, b_size, a_size);
+		write(1, "pa\n", 3);
+	}
+	while (min_indice(arr_a, *a_size) != 0)
+	{
+		if (min_indice(arr_a, *a_size) <= (*a_size / 2))
+			rotate(arr_a, *a_size, "ra\n");
+		else
+			reverse_rotate(arr_a, *a_size, "rra\n");
+	}
+}
 
 int	push_swap(int *arr_a, int *a_size)
 {
@@ -26,24 +43,16 @@ int	push_swap(int *arr_a, int *a_size)
 	}
 	if (arr_is_sorted(arr_a, *a_size))
 	{
-		while (b_size != 0)
-		{
-			move_cheapest(arr_b, arr_a, b_size, *a_size);
-			push(arr_b, arr_a, &b_size, a_size, "pa\n");
-		}
-		while (min_indice(arr_a, *a_size) != 0)
-		{
-			if (min_indice(arr_a, *a_size) <= (*a_size / 2))
-				rotate(arr_a, *a_size, "ra\n");
-			else
-				reverse_rotate(arr_a, *a_size, "rra\n");
-		}
+		fill_a(arr_a, arr_b, a_size, &b_size);
 		return (1);
 	}
 	else if (*a_size == 3)
 		sort_three_nbrs(arr_a);
 	else
-		push(arr_a, arr_b, a_size, &b_size, "pb\n");
+	{
+		push(arr_a, arr_b, a_size, &b_size);
+		write(1, "pb\n", 3);
+	}
 	return (0);
 }
 
@@ -70,7 +79,7 @@ int	*arr_extracter(char **av, int ac, int initial)
 		j = 0;
 		while (av[i][j] != '\0')
 		{
-			if (ft_is_digit(av[i][j]) != 1)
+			if (ft_is_digit(av[i][j]) != 1 && av[i][j] != '-')
 			{
 				write(1, "Error\n", 6);
 				return (NULL);
@@ -111,6 +120,7 @@ int	main(int ac, char **av)
 	if (arr_a == NULL)
 		return (0);
 	a_size = count_words(str, ' ');
+	free(str);
 	while (1)
 	{
 		if (push_swap(arr_a, &a_size) == 1)
@@ -119,5 +129,6 @@ int	main(int ac, char **av)
 	// printf("===================\n");
 	// for(int j = 0; j < a_size;j++)
 	// 	printf("%d\n", arr_a[j]);
+	free(arr_a);
 	return (0);
 }
