@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:15:36 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/22 00:15:42 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:44:34 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	push(int *arr_src, int *arr_dst, int *src_size, int *dst_size)
 {
-	int	tmp;
 	int	pushed;
 	int	i;
 

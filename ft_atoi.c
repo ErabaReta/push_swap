@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 23:48:43 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/21 23:48:49 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:40:15 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ long	ft_atoi(const char *str)
 	{
 		nbr *= 10;
 		nbr += str[i++] - 48;
+		if (nbr >= 2147483648 && sign == 1)
+			return (2147483648);
+		if (nbr > 2147483649 && sign == -1)
+			return (-2147483649);
 	}
 	return (nbr * sign);
 }

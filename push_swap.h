@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:54 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/22 03:20:46 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:43:23 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
+#include <stdio.h>
 typedef struct s_cheapest
 {
 	int		value;
@@ -36,8 +36,6 @@ long			ft_atoi(const char *str);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 size_t			indexer(char const *s, char c, size_t i, size_t *end_index);
 size_t			count_words(char const *s, char c);
-static void		*extracter(char *ptr, size_t *end_index,
-					size_t *start_index, const char *s);
 void			*free_all(char **ptr, int i);
 char			**ft_split(char const *s, char c);
 char			*ft_strdup(const char *s1);
@@ -61,5 +59,8 @@ void			sort_three_nbrs(int *arr_a);
 void			swap(int *arr, char *msg);
 void			up_down(int *arr_a, int *arr_b, int a_size, int b_size);
 void			up_up(int *arr_a, int *arr_b, int a_size, int b_size);
-
+int				check_duplicate(int *arr_a, int a_size);
+int				*tallest_sorted_numbers(int *arr_a, int a_size, int	*sorted_size);
+int				sorted_numbers_range(int *arr_a, int a_size, int i);
+int	arr_half_sorted(int *arr_a, int a_size);
 #endif
