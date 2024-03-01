@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:03 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:42:14 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:55:14 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	main(int ac, char **av)
 	a_size = count_words(str, ' ');
 	free(str);
 	if (a_size <= 1 || arr_a == NULL)
-		return (0);
+		return (1);
 	if (check_duplicate(arr_a, a_size) == 1)
-		return (0);
+		return (1);
 	while (1)
 	{
 		if (push_swap(arr_a, &a_size) == 1)

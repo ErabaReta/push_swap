@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:14:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:14:28 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:54:34 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	check_duplicate(int *arr_a, int a_size)
 			if (arr_a[i] == arr_a[j])
 			{
 				write(2, "Error\n", 6);
+				free(arr_a);
 				return (1);
 			}
 			j++;
