@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   fill_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 14:14:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:14:28 by eouhrich         ###   ########.fr       */
+/*   Created: 2024/03/01 14:25:04 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/03/01 14:25:08 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_duplicate(int *arr_a, int a_size)
+void	fill_a(int *arr_a, int *arr_b, int *a_size, int *b_size)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < a_size - 1)
+	while (*b_size != 0)
 	{
-		j = i + 1;
-		while (j < a_size)
-		{
-			if (arr_a[i] == arr_a[j])
-			{
-				write(2, "Error\n", 6);
-				return (1);
-			}
-			j++;
-		}
-		i++;
+		move_cheapest(arr_b, arr_a, *b_size, *a_size);
+		push(arr_b, arr_a, b_size, a_size);
+		write(1, "pa\n", 3);
 	}
-	return (0);
+	while (min_indice(arr_a, *a_size) != 0)
+	{
+		if (min_indice(arr_a, *a_size) <= (*a_size / 2))
+			rotate(arr_a, *a_size, "ra\n");
+		else
+			reverse_rotate(arr_a, *a_size, "rra\n");
+	}
 }

@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 14:14:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:14:28 by eouhrich         ###   ########.fr       */
+/*   Created: 2024/03/01 14:24:13 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/03/01 14:24:15 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_duplicate(int *arr_a, int a_size)
+int	main(int ac, char **av)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < a_size - 1)
-	{
-		j = i + 1;
-		while (j < a_size)
-		{
-			if (arr_a[i] == arr_a[j])
-			{
-				write(2, "Error\n", 6);
-				return (1);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	
 }

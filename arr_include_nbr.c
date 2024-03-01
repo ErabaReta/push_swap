@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   arr_include_nbr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 14:14:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:14:28 by eouhrich         ###   ########.fr       */
+/*   Created: 2024/02/29 22:42:26 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/02/29 22:44:48 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_duplicate(int *arr_a, int a_size)
+int	arr_include_nbr(int *sorted_arr, int sorted_size, int nbr)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < a_size - 1)
+	while (i < sorted_size)
 	{
-		j = i + 1;
-		while (j < a_size)
-		{
-			if (arr_a[i] == arr_a[j])
-			{
-				write(2, "Error\n", 6);
-				return (1);
-			}
-			j++;
-		}
+		if (nbr == sorted_arr[i])
+			return (1);
 		i++;
 	}
 	return (0);

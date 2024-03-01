@@ -1,4 +1,5 @@
- push_swap_tester
- push_swap
-cheker_Mac
- .gitignore
+push_swap_tester
+push_swap
+checker_Mac
+.gitignore
+checker.c

@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:54 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/24 20:43:23 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:41:27 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-#include <stdio.h>
+
 typedef struct s_cheapest
 {
 	int		value;
@@ -36,7 +36,7 @@ long			ft_atoi(const char *str);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 size_t			indexer(char const *s, char c, size_t i, size_t *end_index);
 size_t			count_words(char const *s, char c);
-void			*free_all(char **ptr, int i);
+void			*free_all(char **ptr, int i, int *arr, int mode);
 char			**ft_split(char const *s, char c);
 char			*ft_strdup(const char *s1);
 char			*ft_strdup(const char *s1);
@@ -47,7 +47,7 @@ void			move_cheapest(int *arr_b, int *arr_a, int b_size, int a_size);
 t_cheapest		path_counter(int i, int rank, int a_size, int b_size);
 int				push_swap(int *arr_a, int *a_size);
 int				ft_is_digit(int c);
-int				*arr_extracter(char **av, int ac, int initial);
+int				*arr_extracter(char **av, int ac);
 void			push(int *arr_src, int *arr_dst, int *src_size, int *dst_size);
 int				rank_calc(int *arr, int arr_size, int nbr);
 void			reverse_rotate_rotate(int *arr_a, int *arr_b, int a_size,
@@ -60,7 +60,16 @@ void			swap(int *arr, char *msg);
 void			up_down(int *arr_a, int *arr_b, int a_size, int b_size);
 void			up_up(int *arr_a, int *arr_b, int a_size, int b_size);
 int				check_duplicate(int *arr_a, int a_size);
-int				*tallest_sorted_numbers(int *arr_a, int a_size, int	*sorted_size);
+int				*tallest_sorted_numbers(int *arr_a, int a_size,
+					int	*sorted_size);
 int				sorted_numbers_range(int *arr_a, int a_size, int i);
-int	arr_half_sorted(int *arr_a, int a_size);
+int				arr_half_sorted(int *arr_a, int a_size);
+int				arr_include_nbr(int *sorted_arr, int sorted_size, int nbr);
+int				nearest_target(int *arr_a, int a_size, int *sorted_arr,
+					int sorted_size);
+void			move_not_sorted(int *arr_a, int a_size, int *sorted_arr,
+					int sorted_size);
+void			fill_a(int *arr_a, int *arr_b, int *a_size, int *b_size);
+void			fill_b(int *arr_a, int *arr_b, int *a_size, int *b_size);
+char			*ft_joiner(char **av, int ac);
 #endif

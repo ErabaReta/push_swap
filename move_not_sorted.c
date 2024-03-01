@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   move_not_sorted.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 14:14:25 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:14:28 by eouhrich         ###   ########.fr       */
+/*   Created: 2024/03/01 14:21:32 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/03/01 14:21:33 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_duplicate(int *arr_a, int a_size)
+void	move_not_sorted(int *arr_a, int a_size, int *sorted_arr,
+		int sorted_size)
 {
 	int	i;
-	int	j;
+	int	nearest;
 
 	i = 0;
-	while (i < a_size - 1)
+	nearest = nearest_target(arr_a, a_size, sorted_arr, sorted_size);
+	if (nearest < (a_size / 2))
 	{
-		j = i + 1;
-		while (j < a_size)
+		while (i < nearest)
 		{
-			if (arr_a[i] == arr_a[j])
-			{
-				write(2, "Error\n", 6);
-				return (1);
-			}
-			j++;
+			rotate(arr_a, a_size, "ra\n");
+			i++;
 		}
-		i++;
 	}
-	return (0);
+	else
+	{
+		while (a_size > i + nearest)
+		{
+			reverse_rotate(arr_a, a_size, "rra\n");
+			i++;
+		}
+	}
 }
