@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arr_extracter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:40:19 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/29 22:40:56 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:31:49 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	*arr_extracter(char **av, int ac)
 		j = -1;
 		while (av[i][++j] != '\0')
 			if (ft_is_digit(av[i][j]) != 1 && av[i][j] != '-'
-					&& av[i][j] != '-')
+					&& av[i][j] != '+')
 				return (free_all(av, ac, arr_a, 1));
 		tmp = ft_atoi(av[i]);
 		if (tmp > INT_MAX)

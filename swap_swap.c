@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_rotate.c                                    :+:      :+:    :+:   */
+/*   swap_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 00:20:15 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/06 19:00:41 by eouhrich         ###   ########.fr       */
+/*   Created: 2024/03/08 17:40:15 by eouhrich          #+#    #+#             */
+/*   Updated: 2024/03/08 17:48:25 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	silent_rotate_rotate(int *arr_a, int *arr_b, int a_size, int b_size)
+void	silent_swap_swap(int *arr_a, int *arr_b)
 {
-	rotate(arr_a, a_size, "");
-	rotate(arr_b, b_size, "");
-}
-
-void	rotate_rotate(int *arr_a, int *arr_b, int a_size, int b_size)
-{
-	rotate(arr_a, a_size, "");
-	rotate(arr_b, b_size, "");
-	write(1, "rr\n", 3);
+	swap(arr_a, "");
+	swap(arr_b, "");
 }
