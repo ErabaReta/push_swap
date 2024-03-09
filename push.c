@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:15:36 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/02/24 20:44:34 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:11:53 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	push(int *arr_src, int *arr_dst, int *src_size, int *dst_size)
 	int	pushed;
 	int	i;
 
+	if (*src_size <= 0)
+		return ;
 	pushed = arr_src[0];
 	i = 0;
 	while (i < *src_size - 1)

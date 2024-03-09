@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:19:43 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/08 12:29:16 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:09:33 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate(int *arr, int size, char *msg)
 	int	tmp;
 	int	i;
 
+	if (size <= 1)
+		return ;
 	tmp = arr[0];
 	i = 0;
 	while (i < size - 1)

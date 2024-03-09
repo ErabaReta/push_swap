@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:03 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:55:14 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:17:47 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	push_swap(int *arr_a, int *a_size)
 	else if (*a_size == 2)
 	{
 		if (arr_a[0] > arr_a[0])
-			swap(arr_a, "sa\n");
+			swap(arr_a, *a_size, "sa\n");
 	}
 	else
 		fill_b(arr_a, arr_b, a_size, &b_size);

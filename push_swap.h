@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:54 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:41:27 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:13:49 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			reverse_rotate(int *arr, int size, char *msg);
 void			rotate_rotate(int *arr_a, int *arr_b, int a_size, int b_size);
 void			rotate(int *arr, int size, char *msg);
 void			sort_three_nbrs(int *arr_a);
-void			swap(int *arr, char *msg);
+void			swap(int *arr, int size, char *msg);
 void			up_down(int *arr_a, int *arr_b, int a_size, int b_size);
 void			up_up(int *arr_a, int *arr_b, int a_size, int b_size);
 int				check_duplicate(int *arr_a, int a_size);

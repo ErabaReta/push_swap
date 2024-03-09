@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:24:13 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/08 21:12:33 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:09:31 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int	check_instructions(int *arr_a, int **sizes, char *str, int *arr_b)
 			push(arr_a, arr_b, sizes[0], sizes[1]);
 	}
 	else if (ft_strcmp(str, "sa\n") == 0)
-		swap(arr_a, "");
+		swap(arr_a, sizes[0][0], "");
 	else if (ft_strcmp(str, "sb\n") == 0)
-		swap(arr_b, "");
+		swap(arr_b, sizes[1][0], "");
 	else if (ft_strcmp(str, "ss\n") == 0)
-		silent_swap_swap(arr_a, arr_b);
+		silent_swap_swap(arr_a, arr_b, sizes[0][0], sizes[1][0]);
 	else if (check_rotates(arr_a, arr_b, sizes, str) == 1)
 		return (1);
 	return (0);

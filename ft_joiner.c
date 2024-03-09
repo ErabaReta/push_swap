@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_joiner.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eouhrich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:31:52 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/01 14:31:53 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:36:32 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ char	*ft_joiner(char **av, int ac)
 	i = 1;
 	while (i < ac)
 	{
+		if (ft_strlen(av[i]) == 0)
+		{
+			free(str);
+			write(2, "Error\n", 6);
+			return (NULL);
+		}
 		str = ft_strjoin(str, " ");
 		str = ft_strjoin(str, av[i]);
 		i++;

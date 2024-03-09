@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:40:56 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/08 17:40:57 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:19:36 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 void	silent_reverse_rotate_rotate(int *arr_a, int *arr_b, int a_size,
 			int b_size);
 void	silent_rotate_rotate(int *arr_a, int *arr_b, int a_size, int b_size);
-void	silent_swap_swap(int *arr_a, int *arr_b);
+void	silent_swap_swap(int *arr_a, int *arr_b, int a_size, int b_size);
 int		ft_strcmp(const char *s1, const char *s2);
 #endif
