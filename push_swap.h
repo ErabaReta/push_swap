@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:54 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/09 13:13:49 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:21:52 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void			move_not_sorted(int *arr_a, int a_size, int *sorted_arr,
 void			fill_a(int *arr_a, int *arr_b, int *a_size, int *b_size);
 void			fill_b(int *arr_a, int *arr_b, int *a_size, int *b_size);
 char			*ft_joiner(char **av, int ac);
+int				is_only_spaces(char *str);
 #endif
