@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:31:52 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/11 13:21:12 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/14 01:21:02 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_joiner(char **av, int ac)
 
 	str = ft_strdup(" ");
 	if (str == NULL || ac <= 1)
-		return (NULL);
+		return (free(str), NULL);
 	i = 1;
 	while (i < ac)
 	{

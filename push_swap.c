@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 03:38:03 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/10 20:54:51 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/14 01:17:58 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int	push_swap(int *arr_a, int *a_size)
 		sort_three_nbrs(arr_a);
 	else if (*a_size == 2)
 	{
-		if (arr_a[0] > arr_a[0])
+		if (arr_a[0] > arr_a[1])
 			swap(arr_a, *a_size, "sa\n");
 	}
 	else
 		fill_b(arr_a, arr_b, a_size, &b_size);
 	return (0);
 }
+
 
 int	main(int ac, char **av)
 {
