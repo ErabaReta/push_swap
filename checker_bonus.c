@@ -6,7 +6,7 @@
 /*   By: eouhrich <eouhrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:24:13 by eouhrich          #+#    #+#             */
-/*   Updated: 2024/03/09 15:09:31 by eouhrich         ###   ########.fr       */
+/*   Updated: 2024/03/14 02:29:32 by eouhrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	handle_instructions(int *arr_a, int a_size, int *b_size)
 		free(str);
 		str = get_next_line(0);
 	}
+	free(arr_b);
 	return (0);
 }
 
